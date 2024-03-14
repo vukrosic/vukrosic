@@ -1,7 +1,6 @@
 ### Hi there 👋
-- 🔭 I’m building the best NextJS / React coding university in the world.
-- 🌱 I’m currently learning NextJS / React.
+- 🔭 Mainly building with NextJS (React) + Convex + Clerk + Typescript + ShadCN + Stripe + Tailwind CSS.
 - 📙 I'm coding for 10 years.
-- ⚡ I'm making YouTube videos for 10 years.
-- 💬 Ask me about my work.
+- ⚡ I'm making YouTube videos for 10 years. @vukrosic
+- 💬 Ask me anything.
 - 📫 How to reach me: vukrosic1@gmail.com
