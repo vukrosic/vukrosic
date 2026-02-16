@@ -1,19 +1,56 @@
 ### Hi there 👋  
 
-I'm learning and teaching you to do AI research.
+My blog posts:  
+📄 **Theoretical Proposal for Hyperbolic Gated Delta Nets**: [English](hyperbolic-associative-memory/hyperbolic-associative-memory.pdf) | [Bilingual Chinese](hyperbolic-associative-memory/hyperbolic-associative-memory-bilingual.pdf)
 
-- YouTube: @vukrosic 
-- X (Twitter): VukRosic99 
-- LinkedIn: Vuk Rosić 
-- Red (Xiaohongshu): vuk_plus 
-- Bilibili: vuk_ai 
-- Douyin: Vuk 武克
-  
+#### 🚀 LLMs, Transformers, Diffusion, JEPA, Reinforcement Learning 
+- 📬 **Contact**: [vukrosic1@gmail.com](mailto:vukrosic1@gmail.com) 
 
-- 🤖 AI Research Engineer focused on transformer-based LLMs and scalable deep learning systems.  
-- 🔬 Built from-scratch DeepSeek & LLaMA coding + deep-dive courses (68K+ views).  
-- 🧠 Passionate about efficient attention, MoEs, and next-gen normalization techniques.  
-- 💻 Experience across AI, ML, and full-stack dev.  
-- 🎥 Making YouTube videos for 5 years — [@vukrosic](https://www.youtube.com/@vukrosic).  
-- 💬 Always happy to talk research, projects, or collabs.  
-- 📫 Reach me at: vukrosic1@gmail.com 
+---
+
+### 🔍 Seeking Open Source AI Lab
+
+**Goal**: Join a collaborative AI research lab. I aim to do high-quality research with like-minded people and maintain a daily social media presence, posting everything I research to accelerate the adoption and progress of Open Source AI.
+
+**Core Requirements:**
+- Maintain my current pace of sharing research content on social media **without restrictions** every day to promote Open Science.
+- Retain research autonomy to ensure that outputs benefit the public to the greatest extent through social media.
+- We may agree on potential publications and directions.
+
+**Languages**: 
+- 🇷🇸 **Serbian** (Mother Tongue)
+- 🇺🇸 **English** (Bilingual / Completely Fluent)
+- 🇨🇳 **Chinese** (Learning/Progressing — Goal: Professional proficiency in 2027)
+
+**Let’s build open-source AI together.** ☕️
+
+---
+
+### 🔍 寻找开源 AI 实验室
+
+**目标**: 加入一个协作式 AI 研究实验室。我希望与志同道合的伙伴共同开展高质量科研工作，并保持每日社交媒体活跃，**发布我研究的所有内容**，以此加速开源 AI 的普及与进步。
+
+**核心诉求**:
+- 保持目前的节奏，每天在社交媒体上**无限制**地分享研究内容，以促进开放科学 (Open Science)。
+- 保持研究自主权，确保产出能通过社交媒体最大程度地惠及大众。
+- 我们可以就潜在的论文发表和研究方向进行协商。
+
+愿意搬迁至中国。
+
+**语言能力**: 
+- 🇷🇸 **塞尔维亚语** (母语)
+- 🇺🇸 **英语** (双语/完全精通)
+- 🇨🇳 **中文** (学习中 — 目标：2027 年达到专业水平)
+
+**让我们一起构建开源 AI。** ☕️
+
+---
+
+#### 🔗 Connect with me
+- 📺 **YouTube**: [@vukrosic](https://www.youtube.com/@vukrosic)
+- 🐦 **X (Twitter)**: [VukRosic99](https://x.com/VukRosic99)
+- 💼 **LinkedIn**: [Vuk Rosić](https://www.linkedin.com/in/vukrosic/)
+- 🔴 **Red (Xiaohongshu)**: [vuk_plus](https://www.xiaohongshu.com/user/profile/679762ae000000000a03d5d1) 
+- 📺 **Bilibili**: [vuk_ai](https://space.bilibili.com/3546833932519662) 
+- 🎵 **Douyin**: [Vuk 武克](https://www.douyin.com/user/92865879653) (`ID: 92865879653`)
+- 🌊 **Weibo**: [Vuk 武克](https://weibo.com/u/8007189005)

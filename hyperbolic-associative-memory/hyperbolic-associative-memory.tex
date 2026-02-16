@@ -1,0 +1,145 @@
+\documentclass[11pt]{article}
+\usepackage{fontspec}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[hidelinks]{hyperref}
+\usepackage[margin=1.2in]{geometry}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{parskip}
+\usepackage{setspace}
+\usepackage{graphicx}
+
+\setstretch{1.15}
+\setcounter{secnumdepth}{0}
+
+\title{Theoretical Proposal: Hyperbolic Gated Delta Networks (HGDN) - Ultra-big memory of hyperbolic space}
+\author{Vuk Rosić \\ \small \raisebox{-0.2\height}{\includegraphics[width=0.02\textwidth]{/Users/vukrosic/AI Science Projects/AI Blog Writing/.agent/skills/md-to-pdf/github.jpg}} \texttt{vukrosic}}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{1. Abstract}
+We propose \textbf{Hyperbolic Gated Delta Networks (HGDN)}, a theoretical Linear Transformer architecture designed to integrate non-Euclidean geometry with hardware-efficient parallel training. By reformulating the Gated Delta Rule as a sequence of manifold-constrained updates on a product of Poincaré balls, HGDN is theorized to exploit the exponential volume of hyperbolic space to eliminate memory collisions in ultra-long contexts.
+
+\section{2. The Core Intuition}
+Language and logic are inherently hierarchical (animal $\to$ mammal $\to$ dog), often branching like a tree. Euclidean space (used in Mamba2/DeltaNet) is ``flat'' and struggles to store many branches without them overlapping and blurring (memory collisions). 
+
+\textbf{Hyperbolic space} is naturally curved like a saddle, where the ``available room'' grows exponentially as you move away from the center. HGDN treats its hidden state as a point in this saddle-shaped space. When storing a new memory (a needle in the haystack), it pushes that memory toward the ``edge'' of the space where there is infinite room to keep it distinct. When it needs to forget, it pulls the state back toward the center. This ``radial memory management'' is hypothesized to make HGDN essentially collision-free for sequences exceeding 1 million tokens.
+
+\section{3. Mathematical Framework}
+\subsection{3.1 Manifold Representation: The Product Poincaré Space}
+Instead of a flat Euclidean matrix, the HGDN state $S_t$ is theorized to reside on a \textbf{product manifold} $\mathcal{M}$:
+
+\[\mathcal{M} = \underbrace{\mathbb{B}_c^{d_k} \times \mathbb{B}_c^{d_k} \times \dots \times \mathbb{B}_c^{d_k}}_{h \text{ times}}\]
+
+\subsubsection{Formula Breakdown:}
+\begin{enumerate}
+    \item \textbf{The Poincaré Ball} ($\mathbb{B}_c^d$): Defined as the set of points $\{x \in \mathbb{R}^d : c\|x\|^2 < 1\}$.
+    \begin{itemize}
+        \item \textbf{$x$}: A point (vector) representing a specific memory or hidden state value.
+        \item \textbf{$\mathbb{R}^d$}: The standard $d$-dimensional space we use for calculations (vector $x$ has $d$ dimensions).
+        \item \textbf{$c$}: The \textbf{Curvature}. It determines how ``sharp'' the saddle shape is. If $c=0$, it's flat Euclidean space.
+        \item \textbf{$\|x\|^2 < 1/c$}: This defines the boundary. The ball has a radius of $1/\sqrt{c}$. Points cannot ``leave'' this radius; instead, as they approach the edge, the space itself stretches to infinity.
+    \end{itemize}
+\end{enumerate}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{@{}lll@{}}
+\toprule
+\textbf{Concept} & \textbf{What it is} & \textbf{Role in HGDN} \\ \midrule
+\textbf{Hyperbolic Space} & The ``True Reality'' & The curved, infinite-volume geometry where memories live. \\ \addlinespace
+\textbf{Saddle / Ball} & Models (Maps) & \begin{tabular}[c]{@{}l@{}}Two different ways to map the same $d$-dimensional reality.\\ The \textbf{Ball} is preferred because it fits neatly into $[-1, 1]$ coordinates.\end{tabular} \\ \addlinespace
+\textbf{State Matrix ($S_t$)} & Group of Vectors & \begin{tabular}[c]{@{}l@{}}A collection of $h$ vectors. Each vector is a point (a ``memory'')\\ tucked into its own Poincaré ball.\end{tabular} \\ \bottomrule
+\end{tabular}
+\end{table}
+
+\begin{quote}
+\textbf{Analogy}: If the ``Hyperbolic Space'' is the Earth, the \textbf{Ball} and the \textbf{Saddle} are just two different map projections (like Mercator vs. Globe). The \textbf{Vectors} (your hidden state) are the actual cities pinned on those maps. Everything here—the space, the maps, and the vectors—has \textbf{$d$ dimensions}.
+\end{quote}
+
+\begin{enumerate}[resume]
+    \item \textbf{The Product Manifold} ($\mathcal{M}$):
+    \begin{itemize}
+        \item \textbf{$\times$ (Cartesian Product)}: This means ``concatenation of independent spaces.'' 
+        \item \textbf{$d_k$}: The dimensionality of each individual head (the ``key/value dimension'').
+        \item \textbf{$h$ (The number of balls)}: Corresponds to the number of value-heads in the Linear Transformer. 
+        \begin{itemize}
+            \item \textbf{Why separate balls?}: One hyperbolic space is essentially one \textbf{tree}. By giving each head its own ball, we allow the model to learn a \textbf{``Forest of Trees.''} This prevents a hierarchy in one head (like grammar rules) from colliding or interfering with a hierarchy in another head (like factual relationships). It ensures that each head can specialize in its own independent ``semantic branch.''
+        \end{itemize}
+    \end{itemize}
+\end{enumerate}
+
+\begin{itemize}
+    \item \textbf{The Infinite Boundary}: While the ball looks bounded to our Euclidean eyes, the hyperbolic distance to the boundary is actually infinite. This provides a ``bottomless'' storage area; as we push memories toward the shell, they become mathematically farther apart from each other, even if they appear close in Euclidean coordinates.
+    \item \textbf{Product Domain Advantage}: By treating each \textbf{head} (which corresponds to a row $s_i$ in the state matrix) as an independent point in its own ball, we allow the model to learn a \textbf{high-dimensional product of trees}. This means HGDN doesn't just store one hierarchy, but hundreds of overlapping, independent hierarchies (e.g., one head for syntax, one for semantic clusters, one for temporal ordering).
+    \item \textbf{Geometric Retrieval}: In standard Euclidean attention, deep branches of a tree ``crowd'' together because the space is too small. This causes \textbf{Branch Interference}: a query for a specific detail (a leaf) accidentally has high similarity with an unrelated detail in a neighboring branch, leading to a ``blurry'' or mixed retrieval.
+    \begin{itemize}
+        \item \textbf{In HGDN}: The standard dot-product is conceptually replaced by seeking the point on the manifold that minimizes the \textbf{geodesic distance}. Because hyperbolic space expands exponentially at the edges, the mathematical ``gap'' between unrelated branches is massive. This ensures the model pulls exactly the right ``needle'' without any signal leakage from neighboring branches.
+    \end{itemize}
+\end{itemize}
+
+\subsection{3.2 Tangent Space Parallel Training (TSPT)}
+\subsubsection{The Problem: The ``Associativity Gap''}
+In standard Linear Transformers (like Mamba or DeltaNet), we use an \textbf{Associative Scan} to calculate the hidden state for a million tokens in parallel. 
+
+\begin{quote}
+\textbf{What is an Associative Scan?} \\
+Normally, a memory $S_t$ is calculated one step at a time: $S_t = S_{t-1} + \text{new memory}$. This is slow ($O(L)$). \\
+An \textbf{Associative Scan} is a parallel algorithm that calculates everything in a \textbf{tree structure}:
+\begin{enumerate}
+    \item \textbf{Round 1}: Calculate $(1+2), (3+4), (5+6), (7+8)$ all at once.
+    \item \textbf{Round 2}: Combine those results: $((1+2)+(3+4))$ and $((5+6)+(7+8))$.
+    \item \textbf{Round 3}: Combine the final two chunks into the grand total. 
+\end{enumerate}
+Instead of 8 sequential steps, it finishes in just 3 ``rounds.'' This logarithmic speed-up is what allows Linear Transformers to process 1 million tokens while staying faster than standard Attention. This only works if your ``addition'' is \textbf{associative} ($A+B+C = (A+B)+C$).
+\end{quote}
+
+\textbf{Hyperbolic space is NOT associative.} If you try to add memories directly on a curve, the order matters too much (rotating a globe 90° North then 90° East is different from 90° East then 90° North). This breaks the parallel scan. Without TSPT, the model would be $100\times$ slower to train.
+
+\subsubsection{The Geometric Logic: Tangent Planes}
+To fix this, we use a ``Locally Euclidean'' trick. Imagine a large globe (the hyperbolic ball). If you zoom in on one tiny patch, that patch looks flat (like a piece of paper touching the globe). This flat paper is the \textbf{Tangent Space}.
+
+TSPT works by ``flattening'' a chunk of data onto this paper, doing the fast math there, and then ``wrapping'' the result back onto the globe.
+
+\subsubsection{Step-by-Step Breakdown:}
+For each sequence chunk (e.g., 2048 tokens), we do the following:
+
+\begin{enumerate}
+    \item \textbf{Projection (The ``Log'' Map)}:
+    \[K_{tan} = \text{Log}_{S_{[0]}}^c(K), \quad Q_{tan} = \text{Log}_{S_{[0]}}^c(Q)\]
+    \begin{itemize}
+        \item \textbf{$S_{[0]}$}: The starting state (the ``anchor point'') for this chunk.
+        \item \textbf{$\text{Log}_{S_{[0]}}^c$}: The \textbf{Logarithm Map}. It ``unrolls'' the hyperbolic curve into a flat Euclidean plane centered at $S_{[0]}$.
+        \item \textbf{$K_{tan}, Q_{tan}$}: The Keys and Queries now live in a flat space where standard addition works.
+    \end{itemize}
+
+    \item \textbf{Euclidean Scan (The ``Parallel Fast-Forward'')}:
+    \[\Delta S_{tan} = \text{AssociativeScan}(Q_{tan}, K_{tan}, V)\]
+    \begin{itemize}
+        \item We perform the standard Gated Delta Rule update. Because we are in the flat Tangent Space, we can use optimized GPU kernels (like Flash-Linear-Attention) to process the whole chunk in $O(L)$ time.
+        \item \textbf{$\Delta S_{tan}$}: The total ``movement'' or memory update calculated in flat space.
+    \end{itemize}
+
+    \item \textbf{Manifold Mapping (The ``Exp'' Map)}:
+    \[S_{[end]} = \text{Exp}_{S_{[0]}}^c(\Delta S_{tan})\]
+    \begin{itemize}
+        \item \textbf{$\text{Exp}_{S_{[0]}}^c$}: The \textbf{Exponential Map}. It takes the flat result $\Delta S_{tan}$ and ``wraps'' it back onto the hyperbolic manifold.
+        \item \textbf{$S_{[end]}$}: The final, valid hyperbolic state that becomes the starting point for the next chunk.
+    \end{itemize}
+\end{enumerate}
+
+\textbf{Why this is a breakthrough}: It allows us to keep the massive memory capacity of Hyperbolic space while keeping the $10\times$ training speed of Euclidean models.
+
+\subsection{3.3 Stability: Hyperbolic Spectral Normalization (HSN)}
+To prevent the ``Boundary Catastrophe'' (numerical overflow as $\|x\| \to 1$), we propose a radial contraction after each state update:
+\[S_t \leftarrow \text{tanh}\left(\frac{R_{max}}{2} \cdot \frac{S_t}{\|S_t\|}\right)\]
+This is intended to ensure the state matrix remains within a stable disk $\|x\| \le 0.99$, guaranteeing differentiable gradients and training stability in FP16/BF16.
+
+\section{4. Summary}
+HGDN offers a novel synthesis of non-Euclidean geometry and parallel processing. By leveraging the exponential volume of hyperbolic space, it provides a theoretically collision-free memory for ultra-long contexts, while Tangent Space Parallel Training (TSPT) ensures it remains as fast as standard Linear Transformers on modern hardware.
+
+\end{document}
