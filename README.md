@@ -1,6 +1,8 @@
 ### Hi there 👋  
 
 My blog posts:  
+📄 **Magnitude Attention: Don't Let Group of Similar Keys Steal Your Probability Mass**: [English](magnitude-attention/magnitude-attention.pdf) | [Chinese](magnitude-attention/magnitude-attention-ch.pdf)
+
 📄 **Theoretical Proposal for Hyperbolic Gated Delta Nets**: [English](hyperbolic-associative-memory/hyperbolic-associative-memory.pdf) | [Bilingual Chinese](hyperbolic-associative-memory/hyperbolic-associative-memory-bilingual.pdf)
 
 #### 🚀 LLMs, Transformers, Diffusion, JEPA, Reinforcement Learning 
