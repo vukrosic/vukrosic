@@ -1,6 +1,8 @@
 ### Hi there 👋  
 
 My blog posts:  
+📄 **How Does a Transformer 'Sharpen' Its Focus? (Key Norm Evolution)**: [English](key-norm-evolution/key_norm_evolution.pdf) | [Bilingual Chinese](key-norm-evolution/key_norm_evolution_bilingual.pdf)
+
 📄 **Magnitude Attention: Don't Let Group of Similar Keys Steal Your Probability Mass**: [English](magnitude-attention/magnitude-attention.pdf) | [Chinese](magnitude-attention/magnitude-attention-ch.pdf)
 
 📄 **Theoretical Proposal for Hyperbolic Gated Delta Nets**: [English](hyperbolic-associative-memory/hyperbolic-associative-memory.pdf) | [Bilingual Chinese](hyperbolic-associative-memory/hyperbolic-associative-memory-bilingual.pdf)
