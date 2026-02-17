@@ -1,7 +1,7 @@
 ### Hi there 👋  
 
 My blog posts:  
-📄 **How Does a Transformer 'Sharpen' Its Focus? (Key Norm Evolution)**: [English](key-norm-evolution/key_norm_evolution.pdf) | [Bilingual Chinese](key-norm-evolution/key_norm_evolution_bilingual.pdf)
+📄 **Early LLM (transformer) layers pay attention to many tokens to gain context, later layers focus on fewer "important" tokens**: [English](key-norm-evolution/key_norm_evolution.pdf) | [Bilingual Chinese](key-norm-evolution/key_norm_evolution_bilingual.pdf)
 
 📄 **Magnitude Attention: Don't Let Group of Similar Keys Steal Your Probability Mass**: [English](magnitude-attention/magnitude-attention.pdf) | [Chinese](magnitude-attention/magnitude-attention-ch.pdf)
 
