@@ -1,6 +1,8 @@
 ### Hi there 👋  
 
 My blog posts:  
+📄 **Early observations: QK Norm seems to hurt Muon optimizer LLM training**: [English](Early%20observations%20-%20QK%20Norm%20seems%20to%20hurt%20Muon%20optimizer%20LLM%20training/Early%20observations%20-%20QK%20Norm%20seems%20to%20hurt%20Muon%20optimizer%20LLM%20training.pdf) | [Chinese](Early%20observations%20-%20QK%20Norm%20seems%20to%20hurt%20Muon%20optimizer%20LLM%20training/Early%20observations%20-%20QK%20Norm%20seems%20to%20hurt%20Muon%20optimizer%20LLM%20training-ch.pdf)
+
 📄 **Early LLM (transformer) layers pay attention to many tokens to gain context, later layers focus on fewer "important" tokens**: [English](key-norm-evolution/key_norm_evolution.pdf) | [Bilingual Chinese](key-norm-evolution/key_norm_evolution_bilingual.pdf)
 
 📄 **Magnitude Attention: Don't Let Group of Similar Keys Steal Your Probability Mass**: [English](magnitude-attention/magnitude-attention.pdf) | [Chinese](magnitude-attention/magnitude-attention-ch.pdf)

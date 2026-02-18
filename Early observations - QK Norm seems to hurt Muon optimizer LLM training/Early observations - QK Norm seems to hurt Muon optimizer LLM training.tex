@@ -1,0 +1,114 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{fontspec}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage[margin=1.2in]{geometry}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{parskip}
+\usepackage{setspace}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{float}
+
+\setstretch{1.15}
+\setcounter{secnumdepth}{0}
+\date{}
+
+\title{QK-Norm seems to hurt Muon optimizer LLM training\thanks{The author would like to thank Novita AI for providing the compute resources for this study.}}
+\author{Vuk Rosić \\ \small \raisebox{-0.2\height}{\includegraphics[width=0.02\textwidth]{/root/llm-research-kit/.agent/skills/md-to-pdf/github.jpg}} \texttt{vukrosic}}
+
+\begin{document}
+
+\maketitle
+
+Today I found some weird results - QK-Norm + Muon optimizer leads to better loss but more wasted compute (lower rank heads)
+
+\begin{quote}
+\textbf{Setup:} 88M parameter LLM, 22 layers, 64-dim heads, Muon optimizer.
+Two identical runs - one with QK-RMSNorm on queries and keys, one without.
+\end{quote}
+
+Left: loss of QK-Norm seems better, but look at the right panel, that's the \textbf{Participation Ratio (PR)} - a measure of how many of the 64 available dimensions each attention head is actually using (others collapsed = became multiple of others, don't hold new information)
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{comparison_20m.png}
+    \caption*{Loss and Rank Comparison}
+\end{figure}
+
+Both are dropping. But QK-Norm is collapsing \textbf{faster}. By 16M tokens, the QK-Norm model is using $\sim$7\% fewer effective dimensions than the version without it.
+
+This gap just keeps getting wider. Here's what happens if you train longer (25M tokens, separate experiment):
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../rank_study/pr_trajectory_4way.png}
+    \caption*{25M Trajectory}
+\end{figure}
+
+The model with fewer active dimensions still has slightly better loss... \textit{for now}. But is it building something fragile?
+
+\section{Where Does the Collapse Happen?}
+
+This is where it gets interesting. The collapse isn't uniform across layers.
+
+\textbf{Muon + QK-Norm (25M tokens) - some layers are basically dead:}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../rank_study/layer_rank_A1_Baseline_QK_Muon.png}
+    \caption*{QK-Norm Layer Breakdown}
+\end{figure}
+
+Look at layers 1 and 3 - their PR dropped below \textbf{10}. Out of 64 possible dimensions, these layers are only using $\sim$10. The rest is what we call ``ghost compute'' - the GPU is doing math on dimensions that contribute almost nothing.
+
+\textbf{Muon without QK-Norm (25M tokens) - uniform and alive:}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../rank_study/layer_rank_A2_NoQK_Muon.png}
+    \caption*{No QK-Norm Layer Breakdown}
+\end{figure}
+
+Every single layer maintains PR > 45. No layer ``died.'' The representational bandwidth is remarkably uniform across the entire network.
+
+Why would normalization cause some layers to collapse and not others? What's special about layers 1 and 3 in the QK-Norm run? (unanswered)
+
+\section{The Paradox}
+
+So here's what we're looking at:
+
+\begin{table}[H]
+\centering
+\begin{tabular}{@{}lll@{}}
+\toprule
+Metric & QK-Norm & No QK-Norm \\ \midrule
+Val Loss (16M) & \checkmark \textbf{4.233} (better) & 4.253 \\
+Effective Rank (16M) & 43.5 & \checkmark \textbf{46.8} (higher) \\
+Effective Rank (25M) & 30 (collapsing) & \checkmark \textbf{51} (stable) \\
+Layer Uniformity & $\times$ Dying layers & \checkmark All layers alive \\ \bottomrule
+\end{tabular}
+\end{table}
+
+The model that looks ``worse'' structurally is actually predicting tokens slightly better. The model with richer internal representations is slightly behind on loss.
+
+\subsection{Open Questions}
+
+\begin{itemize}
+    \item \textbf{Does the structural advantage eventually translate to better loss?}
+    \item \textbf{Is QK-Norm ``cheating''?} Does it find low-rank shortcuts that minimize cross-entropy but sacrifice something downstream - like in-context learning, or reasoning, or generalization to OOD data?
+    \item \textbf{Is Muon's orthogonalization already doing what QK-Norm does?}
+    \item \textbf{Is a PR of 51 even better than a PR of 30?}
+    \item \textbf{What happens at 100M+ tokens?}
+\end{itemize}
+
+What could be happening is a battle between Muon's orthogonalization pressure and QK-Norm's geometry-constraining pressure.
+
+Without the norm layer, Muon can push into higher-rank configurations freely. Maybe the model trains a bit slower at first, but its internal representations stay diverse and distributed.
+
+Whether that diversity actually matters for downstream capabilities - that's the real question we haven't answered yet.
+
+\end{document}
