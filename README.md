@@ -1,5 +1,14 @@
 ### Hi there 👋  
 
+#### 🔗 Connect with me
+- 📺 **YouTube**: [@vukrosic](https://www.youtube.com/@vukrosic)
+- 🐦 **X (Twitter)**: [VukRosic99](https://x.com/VukRosic99)
+- 💼 **LinkedIn**: [Vuk Rosić](https://www.linkedin.com/in/vuk-r-b71561164/)
+- 🔴 **Red (Xiaohongshu)**: [vuk_plus](https://www.xiaohongshu.com/user/profile/679762ae000000000a03d5d1) 
+- 📺 **Bilibili**: [vuk_ai](https://space.bilibili.com/3546833932519662) 
+- 🎵 **Douyin**: [Vuk 武克](https://www.douyin.com/user/92865879653) (`ID: 92865879653`)
+- 🌊 **Weibo**: [Vuk 武克](https://weibo.com/u/8007189005)
+
 My blog posts:  
 📄 **Early observations: QK Norm seems to hurt Muon optimizer LLM training**: [English](Early%20observations%20-%20QK%20Norm%20seems%20to%20hurt%20Muon%20optimizer%20LLM%20training/Early%20observations%20-%20QK%20Norm%20seems%20to%20hurt%20Muon%20optimizer%20LLM%20training.pdf) | [Chinese](Early%20observations%20-%20QK%20Norm%20seems%20to%20hurt%20Muon%20optimizer%20LLM%20training/Early%20observations%20-%20QK%20Norm%20seems%20to%20hurt%20Muon%20optimizer%20LLM%20training-ch.pdf)
 
@@ -49,14 +58,3 @@ My blog posts:
 - 🇨🇳 **中文** (学习中 — 目标：2027 年达到专业水平)
 
 **让我们一起构建开源 AI。** ☕️
-
----
-
-#### 🔗 Connect with me
-- 📺 **YouTube**: [@vukrosic](https://www.youtube.com/@vukrosic)
-- 🐦 **X (Twitter)**: [VukRosic99](https://x.com/VukRosic99)
-- 💼 **LinkedIn**: [Vuk Rosić](https://www.linkedin.com/in/vukrosic/)
-- 🔴 **Red (Xiaohongshu)**: [vuk_plus](https://www.xiaohongshu.com/user/profile/679762ae000000000a03d5d1) 
-- 📺 **Bilibili**: [vuk_ai](https://space.bilibili.com/3546833932519662) 
-- 🎵 **Douyin**: [Vuk 武克](https://www.douyin.com/user/92865879653) (`ID: 92865879653`)
-- 🌊 **Weibo**: [Vuk 武克](https://weibo.com/u/8007189005)
