@@ -4,8 +4,8 @@
 
 Tiny, honest, code-trained models — each does one narrow thing a script can't, runs on a CPU in milliseconds, and ships with its own benchmark, tests, and technical report.
 
-- **[nano-dates](https://github.com/vukrosic/nano-dates)** — a 1M-parameter byte-level transformer that parses natural date phrases ("next friday", "third thursday of march") into ISO-8601 dates. Trained 100% on code-generated data, with an honest map of where it breaks. → [model on Hugging Face](https://huggingface.co/vukrosic/nano-dates)
-- **[nano-case](https://github.com/vukrosic/nano-case)** — a 1M-parameter byte-level transformer that converts boundary-destroyed identifiers (`sdkmodel`, `HTTPREQUESTHANDLER`) to any case style — the slice a regex provably can't split. 99.7% vs 8.2% for a regex on that slice. → [model on Hugging Face](https://huggingface.co/vukrosic/nano-case)
+- **[nano-case](https://github.com/vukrosic/nano-case)** — converts messy, separator-less identifiers like `sdkmodel` or `HTTPREQUESTHANDLER` into any case style (snake/kebab/camel/pascal/const) — the slice a regex provably can't split (99.7% vs 8.2%). A ~1M-param byte-level transformer trained 100% on code-generated data. → [model on Hugging Face](https://huggingface.co/vukrosic/nano-case)
+- **[nano-dates](https://github.com/vukrosic/nano-dates)** — turns natural date phrases like "next friday" or "third thursday of march" into ISO-8601 dates, with an honest map of where it breaks. A ~1M-param byte-level transformer trained 100% on code-generated data. → [model on Hugging Face](https://huggingface.co/vukrosic/nano-dates)
 
 ---
 
