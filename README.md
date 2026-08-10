@@ -2,7 +2,7 @@
 
 #### 🤖 AI Models
 
-Tiny, honest, code-trained models — each does one narrow thing a script can't, runs on a CPU in milliseconds, and ships with its own benchmark, tests, and technical report.
+Tiny code-trained models — each does one narrow thing a script can't, runs on a CPU in milliseconds, and ships with its own benchmark, tests, and technical report.
 
 - **[nano-proofread](https://github.com/vukrosic/nano-proofread)** — fixes context errors a spell-checker can't see (`their` → `they're`). → [HF](https://huggingface.co/vukrosic/nano-proofread)
 - **[nano-g2p](https://github.com/vukrosic/nano-g2p)** — predicts how a word is pronounced (`though` → `DH OW`). → [HF](https://huggingface.co/vukrosic/nano-g2p)
