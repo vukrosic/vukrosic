@@ -4,7 +4,7 @@
 
 Machine learning research on optimizers, LLM architecture, memory and world models. Every result ships with code that reproduces it.
 
-- **All papers, results and research environments:** [opensuperintelligencelab.com/research](https://opensuperintelligencelab.com/research/)
+- **All papers, results and research environments:** [vukrosic.github.io/research](https://vukrosic.github.io/research/)
 - **Google Scholar:** [Vuk Rosić](https://scholar.google.com/citations?user=WqHnfDgAAAAJ) · **ORCID:** [0009-0001-3983-1579](https://orcid.org/0009-0001-3983-1579)
 
 ---
