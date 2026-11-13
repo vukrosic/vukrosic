@@ -1,5 +1,14 @@
 ### Hi there 👋  
 
+#### 📄 Research
+
+Machine learning research on optimizers, LLM architecture, memory and world models. Every result ships with code that reproduces it.
+
+- **All papers, results and research environments:** [opensuperintelligencelab.com/research](https://opensuperintelligencelab.com/research/)
+- **Google Scholar:** [Vuk Rosić](https://scholar.google.com/citations?user=WqHnfDgAAAAJ) · **ORCID:** [0009-0001-3983-1579](https://orcid.org/0009-0001-3983-1579)
+
+---
+
 #### 🤖 AI Models
 
 Tiny code-trained models — each does one narrow thing a script can't, runs on a CPU in milliseconds, and ships with its own benchmark, tests, and technical report.
